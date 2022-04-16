@@ -7,7 +7,6 @@ import "net/http"
 type Handler http.HandlerFunc
 
 // Interceptor 拦截器，该方法的设计特点：入参要有handler的入参以及handler，返回值要与handler相同
-// info这种附带的值可以根据业务需要而定
 type Interceptor func(resp http.ResponseWriter, req *http.Request, handler Handler)
 
 // ChainInterceptor 拦截器调用链，生成最终链式拦截器

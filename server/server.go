@@ -2,13 +2,19 @@ package server
 
 import (
 	"github.com/liaojuntao/server/router"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 type Server struct {
-	addr string
+	addr   string
 	router []router.Router
-	serverMux HttpServeMux
+	*http.ServeMux
+	Interceptors []Interceptor
+	log.Logger // todo 日志模块，实现日志追踪，可以做请求链追踪等
 }
 
 func NewServer(addr string) *Server {
@@ -18,17 +24,34 @@ func NewServer(addr string) *Server {
 	return s
 }
 
-func (s *Server) init() {
-
+func (s *Server) Init() {
+	s.ServeMux = http.DefaultServeMux
+	s.router = loadRouter()
+	s.Interceptors = serverInterceptors()
 }
 
-type HttpServeMux struct {
-	http.ServeMux
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	finalInterceptor := ChainInterceptor(s.Interceptors...)
+	finalInterceptor(w, r, s.ServeMux.ServeHTTP)
 }
 
-func (hsm *HttpServeMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	hsm.ServeMux.ServeHTTP(w,r)
+func (s *Server) Run() error {
+	errChan := make(chan error)
+	stopChan := make(chan os.Signal) // 利用该stopChan可以做优雅退出
+	signal.Notify(stopChan, syscall.SIGTERM, syscall.SIGINT)
+	// 加载路由器
+	for _, r := range s.router {
+		http.HandleFunc(r.GetPath(), r.GetHandler())
+	}
+	go func() {
+		errChan <- http.ListenAndServe(s.addr, s)
+	}()
+
+	select {
+		case err := <-errChan:
+			return err
+		case <-stopChan:
+	}
+	println("graceful stop") // todo graceful stop
+	return nil
 }
-
-
-

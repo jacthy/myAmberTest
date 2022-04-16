@@ -7,4 +7,3 @@ type UserRepo interface {
 	Delete(user *User) error
 	GetById(id int) *User
 }
-

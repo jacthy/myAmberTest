@@ -7,13 +7,13 @@ import (
 	"time"
 )
 
-type userModel struct {
-	userId string
-	userName string
-	birthOfDate *time.Time
-	address string
-	description string
-	createAt *time.Time
+type user struct {
+	UserId      string
+	UserName    string
+	BirthOfDate *time.Time
+	Address     string
+	Description string
+	CreateAt    *time.Time
 }
 
 // DefaultUserRepo 默认用户实体的存储服务实例
@@ -25,7 +25,7 @@ func init() {
 		panic("failed to connect database")
 	}
 	// 这里的数据库初始化应该独立DB操作，这里为了简化demo所以耦合在这里
-	db.AutoMigrate(&userModel{})
+	db.AutoMigrate(&user{})
 	DefaultUserRepo = &UserRepo{
 		DB: db,
 	}

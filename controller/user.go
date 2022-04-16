@@ -2,7 +2,7 @@
 package controller
 
 // UserCtl 用户控制器，业务处理器
-type UserCtl struct {}
+type UserCtl struct{}
 
 // NewUserController 创建user controller
 func NewUserController() *UserCtl {
@@ -10,18 +10,18 @@ func NewUserController() *UserCtl {
 }
 
 // CreateUser 创建用户业务逻辑
-func (u *UserCtl) CreateUser()  {
+func (u *UserCtl) CreateUser() {
 
 }
 
-func (u *UserCtl) UpdateUser()  {
+func (u *UserCtl) UpdateUser() {
 
 }
 
-func (u *UserCtl) DeleteUser()  {
+func (u *UserCtl) DeleteUser() {
 
 }
 
-func (u *UserCtl) GetUserById()  {
+func (u *UserCtl) GetUserById() {
 
 }
