@@ -1,7 +1,18 @@
 package router
 
 import (
+	"encoding/json"
+	"fmt"
+	"github.com/liaojuntao/controller"
+	"github.com/liaojuntao/infrastruct"
+	"io/ioutil"
 	"net/http"
+	"strconv"
+)
+
+const (
+	paramErr = 4001 // 参数校验错误
+	optErr   = 4002 // 业务操作错误
 )
 
 var defaultUserRouter *UserRouter
@@ -38,11 +49,37 @@ func (u *UserRouter) CreateUserRouter() Router {
 	return u
 }
 
+// createUserHandler 创建用户的请求处理器，方法POST
 func createUserHandler(resp http.ResponseWriter, req *http.Request) {
-	println("/user/create is in")
 	// 这里可以做一些数据合法性校验，如os注入攻击
-	// 转controller处理
-	// 处理返回的结果
+	user, err := getUserModelFromReqBody(req)
+	fmt.Printf("%v,%v\n", user,err)
+	if err != nil {
+		setParamErr(resp)
+		return
+	}
+	err = controller.NewUserController().CreateUser(user)
+	if err != nil {
+		setErrResp(resp, err.Error())
+		return
+	}
+
+}
+
+func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {
+	userModel := new(infrastruct.User)
+	result, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		return nil, err
+	}
+	if err := json.Unmarshal(result, userModel); err != nil {
+		return nil, err
+	}
+	return userModel, nil
+}
+
+func getIdFromReqHeader(req *http.Request) (int, error) {
+	return strconv.Atoi(req.URL.Query().Get("userId"))
 }
 
 // Router 路由抽象类，解耦路由

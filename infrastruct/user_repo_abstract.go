@@ -4,6 +4,7 @@ package infrastruct
 type UserRepo interface {
 	Create(user *User) error
 	Update(user *User) error
-	Delete(user *User) error
-	GetById(id int) *User
+	DeleteById(id int) error
+	GetByUserName(userName string) (*User, error)
+	NotExistByName(userName string) (bool, error)
 }

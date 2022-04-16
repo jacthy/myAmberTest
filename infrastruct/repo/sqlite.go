@@ -8,7 +8,7 @@ import (
 )
 
 type user struct {
-	UserId      string
+	UserId      string `gorm:"primary_key"`
 	UserName    string
 	BirthOfDate *time.Time
 	Address     string
@@ -16,17 +16,20 @@ type user struct {
 	CreateAt    *time.Time
 }
 
-// DefaultUserRepo 默认用户实体的存储服务实例
-var DefaultUserRepo *UserRepo
+// defaultUserRepo 默认用户实体的存储服务实例
+var defaultUserRepo *UserRepo
 
 func init() {
 	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
+
 	// 这里的数据库初始化应该独立DB操作，这里为了简化demo所以耦合在这里
-	db.AutoMigrate(&user{})
-	DefaultUserRepo = &UserRepo{
+	if !db.Migrator().HasTable(&user{}) {
+		db.AutoMigrate(&user{})
+	}
+	defaultUserRepo = &UserRepo{
 		DB: db,
 	}
 }
@@ -35,23 +38,45 @@ type UserRepo struct {
 	DB *gorm.DB
 }
 
-// NewUserRepo 返回sqlite的仓储存储服务实例（单例饿汉模式）
-func NewUserRepo() infrastruct.UserRepo {
-	return DefaultUserRepo
+// GetUserRepo 返回sqlite的仓储存储服务实例（单例饿汉模式）
+func GetUserRepo() infrastruct.UserRepo {
+	return defaultUserRepo
 }
 
-func (u UserRepo) Create(user *infrastruct.User) error {
-	panic("implement me")
+// Create 将新建对象进行持久化
+func (u *UserRepo) Create(user *infrastruct.User) error {
+	return u.DB.Create(user).Error
 }
 
-func (u UserRepo) Update(user *infrastruct.User) error {
-	panic("implement me")
+func (u *UserRepo) DeleteById(id int) error {
+	return u.DB.Delete(&user{}, "user_id", id).Error
 }
 
-func (u UserRepo) Delete(user *infrastruct.User) error {
-	panic("implement me")
+func (u *UserRepo) GetByUserName(userName string) (*infrastruct.User, error) {
+	user, err := u.getByUserName(userName)
+	if err != gorm.ErrRecordNotFound {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
 }
 
-func (u UserRepo) GetById(id int) *infrastruct.User {
+func (u *UserRepo) getByUserName(userName string) (*infrastruct.User, error) {
+	var user infrastruct.User
+	err := u.DB.First(&user, "user_name", userName).Error
+	return &user, err
+}
+
+func (u *UserRepo) NotExistByName(userName string) (bool, error) {
+	_, err := u.getByUserName(userName)
+	if err == gorm.ErrRecordNotFound {
+		return true, nil
+	}
+	return false, err
+}
+
+func (u *UserRepo) Update(user *infrastruct.User) error {
 	panic("implement me")
 }

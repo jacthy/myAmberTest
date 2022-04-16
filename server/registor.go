@@ -23,15 +23,16 @@ func loadRouter() []router.Router {
 func serverInterceptors() []Interceptor {
 	i := make([]Interceptor, 0, interceptorNum)
 	return append(i,
+		defaultInterceptor,
 		safeValidInterceptor,
 	)
 }
 
-// defaultInterceptor
+// defaultInterceptor 默认拦截器
 func defaultInterceptor(resp http.ResponseWriter, req *http.Request, handler Handler) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Printf("oh no, fatal err: %v \n", err) // 这里可以做一个告警的入口，及时报警处理
+			fmt.Printf("oh no, fatal err: %v \n", err) // todo 这里可以做一个告警的入口，及时报警处理
 		}
 	}()
 	handler(resp, req)
@@ -40,6 +41,6 @@ func defaultInterceptor(resp http.ResponseWriter, req *http.Request, handler Han
 // safeValidInterceptor 参数安全校验器
 func safeValidInterceptor(resp http.ResponseWriter, req *http.Request, handler Handler) {
 	println("safeValidInterceptor")
-	fmt.Printf("req header: %v\n", req)
+	// 这里也可以做一些数据合法性校验，如所有入参的os注入攻击
 	handler(resp, req)
 }

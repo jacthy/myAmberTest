@@ -1,5 +1,6 @@
 ## 系统介绍
-go backend test demo from liaojuntao，一个简易的用户管理系统demo
+go backend test demo from liaojuntao，一个简易的用户管理系统demo,
+server端算是一个对自己的challenge,自己实现的简易web框架
 ### 系统简析
 ![image](./系统架构图.png)
 - 系统主要分三层：接口层，业务层，基础服务层
