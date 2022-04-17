@@ -15,7 +15,7 @@ type UserCtl struct {
 // NewUserController 创建user controller 依赖注入方式注入repo服务，解耦
 func NewUserController(userRepo infrastruct.UserRepo) *UserCtl {
 	if userRepo == nil {
-		return &UserCtl{repo: repo.GetUserRepo()}
+		return &UserCtl{repo: repo.GetSqliteUserRepo()}
 	}
 	return &UserCtl{repo: userRepo}
 }
@@ -32,8 +32,15 @@ func (u *UserCtl) CreateUser(user *infrastruct.User) error {
 	return u.repo.Create(user)
 }
 
-func (u *UserCtl) UpdateUser() {
-
+func (u *UserCtl) UpdateUser(user *infrastruct.User)error {
+	existUser,err := u.repo.GetByUserName(user.UserName)
+	if err != nil {
+		return err
+	}
+	if existUser!=nil&& existUser.UserId != user.UserId {
+		return errors.New("该用户名已存在")
+	}
+	return u.repo.Update(user)
 }
 
 func (u *UserCtl) DeleteUser() {

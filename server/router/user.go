@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/liaojuntao/controller"
 	"github.com/liaojuntao/infrastruct"
-	"github.com/liaojuntao/infrastruct/repo"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -50,6 +49,13 @@ func (u *UserRouter) CreateUserRouter() Router {
 	return u
 }
 
+// CreateUserRouter 创建用户的router
+func (u *UserRouter) UpdateUserRouter() Router {
+	u.path = "/user/update"
+	u.handler = updateUserHandler
+	return u
+}
+
 // createUserHandler 创建用户的请求处理器，方法POST
 func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 	// 这里可以做一些数据合法性校验，如os注入攻击
@@ -58,7 +64,7 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 		setParamErr(resp)
 		return
 	}
-	err = controller.NewUserController(repo.GetUserRepo()).CreateUser(user)
+	err = controller.NewUserController(nil).CreateUser(user)
 	if err != nil {
 		setErrResp(resp, err.Error())
 		return
@@ -66,6 +72,23 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 	setSuccessResp(resp, "succeed")
 }
 
+// updateUserHandler 更新用户的请求处理器，方法POST
+func updateUserHandler(resp http.ResponseWriter, req *http.Request)  {
+	// 这里可以做一些数据合法性校验，如os注入攻击
+	user, err := getUserModelFromReqBody(req)
+	if err != nil {
+		setParamErr(resp)
+		return
+	}
+	err = controller.NewUserController(nil).UpdateUser(user)
+	if err != nil {
+		setErrResp(resp, err.Error())
+		return
+	}
+	setSuccessResp(resp, "succeed")
+}
+
+// getUserModelFromReqBody 从http body取参数
 func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {
 	userModel := new(infrastruct.User)
 	result, err := ioutil.ReadAll(req.Body)

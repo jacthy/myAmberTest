@@ -30,8 +30,8 @@ type UserRepo struct {
 	db *gorm.DB
 }
 
-// GetUserRepo 返回sqlite的仓储存储服务实例（单例饿汉模式）
-func GetUserRepo() infrastruct.UserRepo {
+// GetSqliteUserRepo 返回sqlite的仓储存储服务实例（单例饿汉模式）
+func GetSqliteUserRepo() infrastruct.UserRepo {
 	return defaultUserRepo
 }
 

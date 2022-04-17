@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/api_design_document.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastruct/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user_test.go" afterDir="false" />
     </list>
@@ -73,7 +72,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (2)">
+  <component name="RunManager" selected="Go Test.TestUpdateUser in github.com/liaojuntao/controller">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -84,7 +83,18 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestCreateUser in github.com/liaojuntao/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$/controller" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/liaojuntao/controller" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestCreateUser\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
       <framework value="gotest" />
@@ -95,48 +105,26 @@
       <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestUpdateUser in github.com/liaojuntao/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
+      <working_directory value="$PROJECT_DIR$/controller" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/infrastruct/repo" />
+      <package value="github.com/liaojuntao/controller" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
+      <pattern value="^\QTestUpdateUser\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_UpdateUserRouter_Handler in github.com/liaojuntao/server/router" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
+      <working_directory value="$PROJECT_DIR$/server/router" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/infrastruct/repo" />
+      <package value="github.com/liaojuntao/server/router" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/infrastruct/repo" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/infrastruct/repo" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
+      <pattern value="^\QTest_UpdateUserRouter_Handler\E$" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -150,13 +138,23 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go test go-backend-test-liaojuntao" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/liaojuntao" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (2)" />
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (1)" />
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo" />
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (5)" />
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (4)" />
+        <item itemvalue="Go Test.TestUpdateUser in github.com/liaojuntao/controller" />
+        <item itemvalue="Go Test.TestCreateUser in github.com/liaojuntao/controller" />
+        <item itemvalue="Go Test.Test_UpdateUserRouter_Handler in github.com/liaojuntao/server/router" />
+        <item itemvalue="Go Test.go test go-backend-test-liaojuntao" />
+        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -168,22 +166,22 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650203196529">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650205318515">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650203196529" />
-    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650203196521">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650205318515" />
+    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650205318513">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650203196521" />
-    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650203196520">
+    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650205318513" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650205318512">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650203196520" />
-    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650203196522">
+    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650205318512" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650205318514">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650203196522" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650205318514" />
     <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1650196469737">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -237,5 +235,6 @@
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$sqlite_test_go.out" NAME="sqlite_test.go Coverage Results" MODIFIED="1650201088619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$TestServer_in_github_com_liaojuntao_server.out" NAME="TestServer in github.com/liaojuntao/server Coverage Results" MODIFIED="1650154394556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$user_test_go.out" NAME="user_test.go Coverage Results" MODIFIED="1650186655424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_go_backend_test_liaojuntao.out" NAME="go test go-backend-test-liaojuntao Coverage Results" MODIFIED="1650203456096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

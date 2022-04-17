@@ -7,14 +7,14 @@ import (
 	"time"
 )
 
-// 同时测试 Create,GetByUserName,DeleteById，因为刚好构成setup->exec->clear的关系
-func TestCreate_GetByUserName_DeleteById(t *testing.T) {
+// 同时测试 Create,GetByUserName,DeleteById，Update 因为刚好构成setup->exec->clear的关系
+func TestCreate_GetByUserName_Update_DeleteById(t *testing.T) {
 	defer func() {
-		// 退出测试后删除脏数据
+		// 防止产生脏数据影响其他测试用例
 		defaultUserRepo.db.Exec("DELETE FROM  users")
 	}()
 	Convey("testing Create,GetByUserName,DeleteById", t, func() {
-		// clear dirty data
+		// clear dirty data 防止脏数据污染
 		err := defaultUserRepo.db.Exec("DELETE FROM  users").Error
 		if err != nil {
 			t.Fatal("repo run error: ", err.Error())
@@ -59,4 +59,3 @@ func TestCreate_GetByUserName_DeleteById(t *testing.T) {
 		So(err, ShouldBeNil)
 	})
 }
-
