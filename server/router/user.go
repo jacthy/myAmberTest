@@ -81,7 +81,7 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 	user, err := getUserModelFromReqBody(req)
 	if err != nil {
 		println(err.Error()) // 应记录日志
-		// setParamErr(resp)
+		setParamErr(resp)
 		return
 	}
 	err = controller.NewUserController(nil).CreateUser(user)

@@ -34,7 +34,7 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 			reqMock := new(http.Request)
 			reqMock.Body = ioutil.NopCloser(strings.NewReader(postData))
 			userRou.GetHandler()(respMock, reqMock)
-			So(respMock.Body.String(), ShouldEqual, "succeed")
+			So(respMock.Body.String(), ShouldEqual, "{\"status\":2000,\"data\":\"succeed\"}")
 			So(respMock.Code, ShouldEqual, 200)
 		})
 
@@ -88,7 +88,7 @@ func Test_UpdateUserRouter_Handler(t *testing.T) {
 			reqMock := new(http.Request)
 			reqMock.Body = ioutil.NopCloser(strings.NewReader(postData))
 			userUpdateRou.GetHandler()(respMock, reqMock)
-			So(respMock.Body.String(), ShouldEqual, "succeed")
+			So(respMock.Body.String(), ShouldEqual, "{\"status\":2000,\"data\":\"succeed\"}")
 			So(respMock.Code, ShouldEqual, 200)
 		})
 
