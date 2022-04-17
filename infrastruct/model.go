@@ -3,7 +3,7 @@ package infrastruct
 
 // User 用户model
 type User struct {
-	UserId      string `json:userId,omitempty`
+	UserId      int `json:userId,omitempty`
 	UserName    string
 	BirthOfDate string
 	Address     string

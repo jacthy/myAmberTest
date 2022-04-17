@@ -19,6 +19,7 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 	patch := NewPatches()
 
 	Convey("testing CreateUserRouter handler", t, func() {
+
 		Convey("testing CreateUserRouter when success", func() {
 			// 打桩controller层，router.handler的业务应与controller层解耦，所以测试用例也应该解藕
 			patch.ApplyMethod(reflect.TypeOf(&controller.UserCtl{}), "CreateUser",
@@ -35,7 +36,8 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 			So(respMock.Body.String(), ShouldEqual, "succeed")
 			So(respMock.Code, ShouldEqual, 200)
 		})
-		Convey("testing CreateUserRouter handler when fail with wrongParam", func() {
+
+		Convey("testing CreateUserRouter handler when fail with wrong param", func() {
 			userRou := GetUserRouter().CreateUserRouter()
 			postData := "{\"userName\":1000,\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
@@ -45,7 +47,8 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 			So(respMock.Body.String(), ShouldEqual, "{\"errCode\":4001,\"errMessage\":\"参数校验错误\"}")
 			So(respMock.Code, ShouldEqual, 200)
 		})
-		Convey("testing CreateUserRouter handler when fail with optErr", func() {
+
+		Convey("testing CreateUserRouter handler when fail with repeat user name", func() {
 			patch.Reset()
 			// 打桩controller层，router.handler的业务应与controller层解耦，所以测试用例也应该解藕
 			patch.ApplyMethod(reflect.TypeOf(&controller.UserCtl{}), "CreateUser",

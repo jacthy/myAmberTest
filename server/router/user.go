@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/liaojuntao/controller"
 	"github.com/liaojuntao/infrastruct"
+	"github.com/liaojuntao/infrastruct/repo"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -57,12 +58,12 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 		setParamErr(resp)
 		return
 	}
-	err = controller.NewUserController().CreateUser(user)
+	err = controller.NewUserController(repo.GetUserRepo()).CreateUser(user)
 	if err != nil {
 		setErrResp(resp, err.Error())
 		return
 	}
-	setSuccessResp(resp,"succeed")
+	setSuccessResp(resp, "succeed")
 }
 
 func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {

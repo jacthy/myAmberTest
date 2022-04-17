@@ -7,15 +7,6 @@ import (
 	"time"
 )
 
-type user struct {
-	UserId      int `gorm:"primary_key"`
-	UserName    string
-	BirthOfDate string
-	Address     string
-	Description string
-	CreateAt    *time.Time
-}
-
 // defaultUserRepo 默认用户实体的存储服务实例
 var defaultUserRepo *UserRepo
 
@@ -24,18 +15,19 @@ func init() {
 	if err != nil {
 		panic("failed to connect database")
 	}
-
+	// 为便于检查，现设置debug 模式
+	db.Debug()
 	// 这里的数据库初始化应该独立DB操作，这里为了简化demo所以耦合在这里
 	if !db.Migrator().HasTable(&user{}) {
 		db.AutoMigrate(&user{})
 	}
 	defaultUserRepo = &UserRepo{
-		DB: db,
+		db: db,
 	}
 }
 
 type UserRepo struct {
-	DB *gorm.DB
+	db *gorm.DB
 }
 
 // GetUserRepo 返回sqlite的仓储存储服务实例（单例饿汉模式）
@@ -45,16 +37,19 @@ func GetUserRepo() infrastruct.UserRepo {
 
 // Create 将新建对象进行持久化
 func (u *UserRepo) Create(user *infrastruct.User) error {
-	return u.DB.Create(user).Error
+	model := toSqliteModel(user)
+	currentTime := time.Now()
+	model.CreateAt = &currentTime
+	return u.db.Create(model).Error
 }
 
 func (u *UserRepo) DeleteById(id int) error {
-	return u.DB.Delete(&user{}, "user_id", id).Error
+	return u.db.Delete(&user{}, "user_id", id).Error
 }
 
 func (u *UserRepo) GetByUserName(userName string) (*infrastruct.User, error) {
 	user, err := u.getByUserName(userName)
-	if err != gorm.ErrRecordNotFound {
+	if err == gorm.ErrRecordNotFound {
 		return nil, nil
 	}
 	if err != nil {
@@ -64,9 +59,9 @@ func (u *UserRepo) GetByUserName(userName string) (*infrastruct.User, error) {
 }
 
 func (u *UserRepo) getByUserName(userName string) (*infrastruct.User, error) {
-	var user infrastruct.User
-	err := u.DB.First(&user, "user_name", userName).Error
-	return &user, err
+	var user user
+	err := u.db.First(&user, "user_name", userName).Error
+	return toUser(&user), err
 }
 
 func (u *UserRepo) NotExistByName(userName string) (bool, error) {
@@ -78,5 +73,6 @@ func (u *UserRepo) NotExistByName(userName string) (bool, error) {
 }
 
 func (u *UserRepo) Update(user *infrastruct.User) error {
-	panic("implement me")
+	modelUser := toSqliteModel(user)
+	return u.db.Model(&modelUser).Updates(modelUser).Error
 }

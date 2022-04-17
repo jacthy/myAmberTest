@@ -7,7 +7,7 @@ import (
 
 // ErrResp 错误时的响应
 type ErrResp struct {
-	ErrCode    int    `json:"errCode"` // 错误响应码
+	ErrCode    int    `json:"errCode"`    // 错误响应码
 	ErrMessage string `json:"errMessage"` // 错误信息
 }
 
