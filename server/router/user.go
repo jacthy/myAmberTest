@@ -1,12 +1,8 @@
 package router
 
 import (
-	"encoding/json"
 	"github.com/liaojuntao/controller"
-	"github.com/liaojuntao/infrastruct"
-	"io/ioutil"
 	"net/http"
-	"strconv"
 )
 
 const (
@@ -49,19 +45,43 @@ func (u *UserRouter) CreateUserRouter() Router {
 	return u
 }
 
-// CreateUserRouter 创建用户的router
+// UpdateUserRouter 更新用户的router
 func (u *UserRouter) UpdateUserRouter() Router {
 	u.path = "/user/update"
 	u.handler = updateUserHandler
 	return u
 }
 
+// UpdateUserRouter 更新用户的router
+func (u *UserRouter) GetByIdRouter() Router {
+	u.path = "/user/getById"
+	u.handler = getByIdHandler
+	return u
+}
+
+func getByIdHandler(resp http.ResponseWriter, req *http.Request) {
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
+	userId, err := getIdFromReqHeader(req)
+	if err != nil {
+		println(err.Error()) // 应记录日志
+		setParamErr(resp)
+		return
+	}
+	userJsonStr, err := controller.NewUserController(nil).GetUserById(userId)
+	if err != nil {
+		setErrResp(resp, err.Error())
+		return
+	}
+	setSuccessResp(resp, userJsonStr)
+}
+
 // createUserHandler 创建用户的请求处理器，方法POST
 func createUserHandler(resp http.ResponseWriter, req *http.Request) {
-	// 这里可以做一些数据合法性校验，如os注入攻击
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
 	user, err := getUserModelFromReqBody(req)
 	if err != nil {
-		setParamErr(resp)
+		println(err.Error()) // 应记录日志
+		// setParamErr(resp)
 		return
 	}
 	err = controller.NewUserController(nil).CreateUser(user)
@@ -73,36 +93,21 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 }
 
 // updateUserHandler 更新用户的请求处理器，方法POST
-func updateUserHandler(resp http.ResponseWriter, req *http.Request)  {
-	// 这里可以做一些数据合法性校验，如os注入攻击
+func updateUserHandler(resp http.ResponseWriter, req *http.Request) {
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
 	user, err := getUserModelFromReqBody(req)
 	if err != nil {
+		println(err.Error()) // 应记录日志
 		setParamErr(resp)
 		return
 	}
 	err = controller.NewUserController(nil).UpdateUser(user)
 	if err != nil {
+		println(err.Error()) // 应记录日志
 		setErrResp(resp, err.Error())
 		return
 	}
 	setSuccessResp(resp, "succeed")
-}
-
-// getUserModelFromReqBody 从http body取参数
-func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {
-	userModel := new(infrastruct.User)
-	result, err := ioutil.ReadAll(req.Body)
-	if err != nil {
-		return nil, err
-	}
-	if err := json.Unmarshal(result, userModel); err != nil {
-		return nil, err
-	}
-	return userModel, nil
-}
-
-func getIdFromReqHeader(req *http.Request) (int, error) {
-	return strconv.Atoi(req.URL.Query().Get("userId"))
 }
 
 // Router 路由抽象类，解耦路由

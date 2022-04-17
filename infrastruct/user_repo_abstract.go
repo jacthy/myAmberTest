@@ -6,5 +6,6 @@ type UserRepo interface {
 	Update(user *User) error
 	DeleteById(id int) error
 	GetByUserName(userName string) (*User, error)
+	GetByUserId(userId int) (*User, error)
 	NotExistByName(userName string) (bool, error)
 }

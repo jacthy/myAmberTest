@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastruct/user_repo_abstract.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/user_repo_abstract.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/router/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/common.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user_test.go" afterDir="false" />
     </list>
@@ -72,7 +76,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.TestUpdateUser in github.com/liaojuntao/controller">
+  <component name="RunManager" selected="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -83,40 +87,7 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreateUser in github.com/liaojuntao/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/controller" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/controller" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreateUser\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/infrastruct/repo" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/infrastruct/repo" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestCreate_GetByUserName_DeleteById\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestUpdateUser in github.com/liaojuntao/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/controller" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/controller" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestUpdateUser\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_UpdateUserRouter_Handler in github.com/liaojuntao/server/router" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$/server/router" />
       <framework value="gotest" />
@@ -124,7 +95,51 @@
       <package value="github.com/liaojuntao/server/router" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTest_UpdateUserRouter_Handler\E$" />
+      <pattern value="^\QTest_GetUserByIdRouter_Handler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$/server/router" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/liaojuntao/server/router" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTest_GetUserByIdRouter_Handler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$/server/router" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/liaojuntao/server/router" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTest_GetUserByIdRouter_Handler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$/server/router" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/liaojuntao/server/router" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTest_GetUserByIdRouter_Handler\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$/server/router" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/liaojuntao/server/router" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTest_GetUserByIdRouter_Handler\E$" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -138,23 +153,13 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test go-backend-test-liaojuntao" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <package value="github.com/liaojuntao" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestUpdateUser in github.com/liaojuntao/controller" />
-        <item itemvalue="Go Test.TestCreateUser in github.com/liaojuntao/controller" />
-        <item itemvalue="Go Test.Test_UpdateUserRouter_Handler in github.com/liaojuntao/server/router" />
-        <item itemvalue="Go Test.go test go-backend-test-liaojuntao" />
-        <item itemvalue="Go Test.TestCreate_GetByUserName_DeleteById in github.com/liaojuntao/infrastruct/repo (3)" />
+        <item itemvalue="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)" />
+        <item itemvalue="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (1)" />
+        <item itemvalue="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router" />
+        <item itemvalue="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (5)" />
+        <item itemvalue="Go Test.Test_GetUserByIdRouter_Handler in github.com/liaojuntao/server/router (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -166,22 +171,26 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650205318515">
+    <state x="411" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1650209500247">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650205318515" />
-    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650205318513">
+    <state x="411" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1650209500247" />
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650211780241">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650205318513" />
-    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650205318512">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650211780241" />
+    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650211780239">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650205318512" />
-    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650205318514">
+    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650211780239" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650211780238">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650205318514" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650211780238" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650211780240">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650211780240" />
     <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1650196469737">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

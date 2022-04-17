@@ -2,6 +2,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"errors"
 	"github.com/liaojuntao/infrastruct"
 	"github.com/liaojuntao/infrastruct/repo"
@@ -32,12 +33,12 @@ func (u *UserCtl) CreateUser(user *infrastruct.User) error {
 	return u.repo.Create(user)
 }
 
-func (u *UserCtl) UpdateUser(user *infrastruct.User)error {
-	existUser,err := u.repo.GetByUserName(user.UserName)
+func (u *UserCtl) UpdateUser(user *infrastruct.User) error {
+	existUser, err := u.repo.GetByUserName(user.UserName)
 	if err != nil {
 		return err
 	}
-	if existUser!=nil&& existUser.UserId != user.UserId {
+	if existUser != nil && existUser.UserId != user.UserId {
 		return errors.New("该用户名已存在")
 	}
 	return u.repo.Update(user)
@@ -47,6 +48,17 @@ func (u *UserCtl) DeleteUser() {
 
 }
 
-func (u *UserCtl) GetUserById() {
-
+func (u *UserCtl) GetUserById(userId int) (string, error) {
+	userModel, err := u.repo.GetByUserId(userId)
+	if err != nil {
+		return "", err
+	}
+	if userModel == nil {
+		return "",nil
+	}
+	str, err := json.Marshal(userModel)
+	if err != nil {
+		return "", err
+	}
+	return string(str), nil
 }

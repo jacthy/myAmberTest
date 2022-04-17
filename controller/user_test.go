@@ -8,8 +8,9 @@ import (
 )
 
 const (
-	existsName = "existsName"
-	sameId = 111
+	existsName = "existsName" // 用于mock已存在的名字
+	sameId     = 111          // 用于mock已存在的id
+	notExistId = 222          // 用于mock不存在的id
 )
 
 // 测试user 的controller层，也需要和repo层解耦
@@ -61,9 +62,52 @@ func TestUpdateUser(t *testing.T) {
 	})
 }
 
+
+
+func TestGetByUserId(t *testing.T) {
+
+	Convey("test GetUserById", t, func() {
+
+		Convey("failed when repo system err", func() {
+			_, err := NewUserController(&mockRepo{isMockWrong: true}).GetUserById(10)
+			So(err, ShouldNotBeNil)
+		})
+
+		Convey("empty when not exist this id", func() {
+			userStr, err := NewUserController(&mockRepo{isMockWrong: false}).GetUserById(notExistId)
+			So(err, ShouldBeNil)
+			So(userStr, ShouldEqual,"")
+		})
+
+		Convey("success when user is exists", func() {
+			userStr, err := NewUserController(&mockRepo{isMockWrong: false}).GetUserById(22)
+			So(err, ShouldBeNil)
+			So(userStr, ShouldEqual,"{\"UserId\":111,\"UserName\":\"user111\",\"BirthOfDate\":\"2020-09-09\",\"Address\":\"addr\",\"Description\":\"des\",\"CreateAt\":\"2020-01-01 16:00:00\"}")
+		})
+	})
+}
+
 // mockRepo mock仓储服务
 type mockRepo struct {
 	isMockWrong bool
+}
+
+func (m *mockRepo) GetByUserId(userId int) (*infrastruct.User, error) {
+	if m.isMockWrong {
+		return nil, errors.New("wrong")
+	}
+	if notExistId == userId {
+		return nil,nil
+	}
+	user := infrastruct.User{
+		UserId:      111,
+		UserName:    "user111",
+		BirthOfDate: "2020-09-09",
+		Address:     "addr",
+		Description: "des",
+		CreateAt:    "2020-01-01 16:00:00",
+	}
+	return &user, nil
 }
 
 func (m *mockRepo) Create(user *infrastruct.User) error {
@@ -92,7 +136,7 @@ func (m *mockRepo) GetByUserName(userName string) (*infrastruct.User, error) {
 		return nil, errors.New("wrong")
 	}
 	if userName == existsName {
-		return &infrastruct.User{UserName: existsName,UserId: sameId}, nil
+		return &infrastruct.User{UserName: existsName, UserId: sameId}, nil
 	}
 	return &infrastruct.User{}, nil
 }

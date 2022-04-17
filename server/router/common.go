@@ -2,7 +2,10 @@ package router
 
 import (
 	"encoding/json"
+	"github.com/liaojuntao/infrastruct"
+	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 // ErrResp 错误时的响应
@@ -29,7 +32,6 @@ func setParamErr(resp http.ResponseWriter) {
 		// 由于此处marshal错误，也需要writeHeader,所以不直接return
 	}
 	resp.Write(message)
-	resp.WriteHeader(http.StatusNotAcceptable)
 }
 
 // setErrResp 设置业务执行错误
@@ -48,17 +50,32 @@ func setErrResp(resp http.ResponseWriter, errorMessage string) {
 
 // setSuccessResp 成功响应信息
 // message 参数可以是字符串，可以是数据结构
-func setSuccessResp(resp http.ResponseWriter, message interface{}) {
-	if message != nil {
-		if val, ok := message.(string); ok {
-			resp.Write([]byte(val))
-		} else {
-			msg, e := json.Marshal(message)
-			if e != nil {
-				println(e.Error()) // 同setParamErr中marshal的错误处理
-			}
-			resp.Write(msg)
-		}
+func setSuccessResp(resp http.ResponseWriter, message string) {
+	reap := SuccessResp{
+		Status: statusOK,
+		Data: message ,
 	}
+	msg, e := json.Marshal(reap)
+	if e != nil {
+		println(e.Error()) // 同setParamErr中marshal的错误处理
+	}
+	resp.Write(msg)
 	resp.WriteHeader(http.StatusOK)
+}
+
+// getUserModelFromReqBody 从http body取参数
+func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {
+	userModel := new(infrastruct.User)
+	result, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		return nil, err
+	}
+	if err := json.Unmarshal(result, userModel); err != nil {
+		return nil, err
+	}
+	return userModel, nil
+}
+
+func getIdFromReqHeader(req *http.Request) (int, error) {
+	return strconv.Atoi(req.URL.Query().Get("userId"))
 }
