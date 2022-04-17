@@ -2,7 +2,6 @@ package router
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/liaojuntao/controller"
 	"github.com/liaojuntao/infrastruct"
 	"io/ioutil"
@@ -11,6 +10,7 @@ import (
 )
 
 const (
+	statusOK = 2000 // 成功响应
 	paramErr = 4001 // 参数校验错误
 	optErr   = 4002 // 业务操作错误
 )
@@ -53,7 +53,6 @@ func (u *UserRouter) CreateUserRouter() Router {
 func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 	// 这里可以做一些数据合法性校验，如os注入攻击
 	user, err := getUserModelFromReqBody(req)
-	fmt.Printf("%v,%v\n", user,err)
 	if err != nil {
 		setParamErr(resp)
 		return
@@ -63,7 +62,7 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 		setErrResp(resp, err.Error())
 		return
 	}
-
+	setSuccessResp(resp,"succeed")
 }
 
 func getUserModelFromReqBody(req *http.Request) (*infrastruct.User, error) {

@@ -8,9 +8,9 @@ import (
 )
 
 type user struct {
-	UserId      string `gorm:"primary_key"`
+	UserId      int `gorm:"primary_key"`
 	UserName    string
-	BirthOfDate *time.Time
+	BirthOfDate string
 	Address     string
 	Description string
 	CreateAt    *time.Time

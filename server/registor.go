@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"github.com/liaojuntao/server/router"
 	"net/http"
 )
@@ -31,9 +30,10 @@ func serverInterceptors() []Interceptor {
 // defaultInterceptor 默认拦截器
 func defaultInterceptor(resp http.ResponseWriter, req *http.Request, handler Handler) {
 	defer func() {
-		if err := recover(); err != nil {
-			fmt.Printf("oh no, fatal err: %v \n", err) // todo 这里可以做一个告警的入口，及时报警处理
-		}
+		//if err := recover(); err != nil {
+		//	fmt.Printf("oh no, fatal err: %v \n", err)
+		//	resp.WriteHeader(http.StatusInternalServerError)
+		//}
 	}()
 	handler(resp, req)
 }
