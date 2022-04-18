@@ -1,74 +1,45 @@
-# Backend Developer Test
-
-Make sure you read the whole document carefully and follow the guidelines in it.
-
-## Context
-
-Build a RESTful API that can `get/create/update/delete` user data from a persistence database
-
-### User Model
-
-```
-{
-  "id": "xxx",                  // user ID 
-  "name": "test",               // user name
-  "dob": "",                    // date of birth
-  "address": "",                // user address
-  "description": "",            // user description
-  "createdAt": ""               // user created date
-}
-```
-
-## Requirements
-
-### Functionality
-
-- The API should follow typical RESTful API design pattern.
-- The data should be saved in the DB.
-- Provide proper unit test.
-- Provide proper API document.
-
-### Tech stack
-
-- Use Node.js or Golang with any framework.
-- Use any DB. Postgres is preferred.
-
-### Bonus
-
-- Write clear documentation on how it's designed and how to run the code.
-- Write good in-code comments.
-- Write good commit messages.
-- An online demo is always welcome.
-
-### Advanced requirements
-
-*These are used for some further challenges. You can safely skip them if you are not asked to do any, but feel free to try out.*
-
-- Provide a complete user auth (authentication/authorization/etc.) strategy, such as OAuth.
-- Provide a complete logging (when/how/etc.) strategy.
-- Imagine we have a new requirement right now that the user instances need to link to each other, i.e., a list of "followers/following" or "friends". Can you find out how you would design the model structure and what API you would build for querying or modifying it?
-- Related to the requirement above, suppose the address of user now includes a geographic coordinate(i.e., latitude and longitude), can you build an API that,
-  - given a user name
-  - return the nearby friends
-
-
-## What We Care About
-
-Feel free to use any open-source library as you see fit, but remember that we are evaluating your coding skills and problem solving skills.
-
-Here's what you should aim for:
-
-- Good use of current Node.js/Golang & API design best practices.
-- Good testing approach.
-- Extensible code.
-
-## FAQ
-
-> Where should I send back the result when I'm done?
-
-Create a new branch for this repo and send us a pull request when you think it's ready for review. You don't have to finish everything prior and you can continue to work on it. We don't have a deadline for the task.
-
-
-> What if I have a question?
-
-Create a new issue in the repo or comment in the code review, we will get back to you shortly.
+## 系统介绍
+go backend test demo from liaojuntao，一个简易的用户管理系统demo,
+server端算是一个对自己的challenge,自己实现的简易web框架
+### 系统简析
+![image](./系统架构图.png)
+- 系统主要分三层：接口层，业务层，基础服务层
+    - 接口层主要是注册路由，规范restful服务接口，以及拦截器（后期可添加限流，熔断，鉴权等高级特性）
+    - 业务层主要是处理业务逻辑，然后调用基础服务层（其实就是dto层）实现持久化存储
+    - 基础服务层，这里抽象了一层repo，为的是将数据库解耦，便于插拔式剪裁组件。这里用作demo，简易为主，用了sqlite做存储，后期可以改用mysql，redis等实现存储
+### tips for developer
+1. 接口层是一个基于go的基础包http实现的一个简易web框架，只添加了两个组件router和interceptor,分别实现路由配置，以及拦截器功能
+    - 注册路由及handler
+    ```
+    // UpdateUserRouter 更新用户的router
+    func (u *UserRouter) DeleteByIdRouter() Router {
+        u.path = "/user/deleteById" // set path
+        u.handler = deleteByIdHandler // set handler
+        return u
+    }
+    ```
+    - 加载到server路由处理器中
+    ```
+    // loadRouter 加载路由
+    func loadRouter() []router.Router {
+        r := make([]router.Router, 0, routerNum)
+        return append(r,
+            router.GetUserRouter().CreateUserRouter(),
+            router.GetUserRouter().UpdateUserRouter(),
+            router.GetUserRouter().GetByIdRouter(),
+            router.GetUserRouter().DeleteByIdRouter(),
+        )
+    }
+    ```
+    - 注册拦截器
+    ```
+    // serverInterceptors 设置拦截器,利用链式调用实现解耦，插件式添加拦截器
+    func serverInterceptors() []Interceptor {
+        i := make([]Interceptor, 0, interceptorNum)
+        return append(i,
+            defaultInterceptor,
+            safeValidInterceptor,
+        )
+    }
+    ```
+2. 
