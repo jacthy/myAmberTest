@@ -90,3 +90,29 @@ server端算是一个对自己的challenge,自己实现的简易web框架
 4. 通过接口+依赖注入方式实现的repo，会直接mock一个对象进行打桩
 ### 接口设计文档参考
 [api接口文档](./api_design_document.md)
+### 接口测试参考
+- Makefile中已经记录可执行成功的测试用例，但需要顺序执行才能保证正确，增->改->查->删
+    ```
+      # 测试添加用户
+      test-add-user:
+        curl -X POST -k -v \
+            -H "Content-Type: application/json"  \
+                http://127.0.0.1:8001/user/create \
+            -d '{"userName":"用户1","birthOfDate":"2021-02-09","address":"广州","description":"描述1"}'
+      
+      # 测试修改用户，用户id有变动的，需要自己修改
+      test-add-user:
+        curl -X POST -k -v \
+            -H "Content-Type: application/json"  \
+                http://127.0.0.1:8001/user/update \
+            -d '{"userId":1,"userName":"用户2","birthOfDate":"2021-02-08","address":"广州","description":"描述1"}'
+      
+      # 需要自己修改UserId
+      test-getById:
+        curl -X GET -k -v  -H "Content-Type: application/json" http://127.0.0.1:8001/user/getById?userId=1
+      
+      
+      # 需要自己修改UserId
+      test-deleteById:
+        curl -X DELETE -k -v  -H "Content-Type: application/json" http://127.0.0.1:8001/user/deleteById?userId=1
+    ```
