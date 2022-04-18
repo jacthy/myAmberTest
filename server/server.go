@@ -47,8 +47,8 @@ func (s *Server) Run() error {
 	signal.Notify(stopChan, syscall.SIGTERM, syscall.SIGINT)
 	// 加载路由器
 	for _, r := range s.router {
-		println(r.GetPath())
 		http.HandleFunc(r.GetPath(), r.GetHandler())
+		println(r.GetPath(),"完成注册")
 	}
 	go func() {
 		errChan <- http.ListenAndServe(s.addr, s)
