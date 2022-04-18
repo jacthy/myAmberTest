@@ -168,3 +168,53 @@ func Test_GetUserByIdRouter_Handler(t *testing.T) {
 		})
 	})
 }
+
+// 测试根据id删除用户， UserController.DeleteUserById的方法被编译器内联了，所以这个测试用例需要禁用内联优化才可以成功
+func Test_DeleteUserByIdRouter_Handler(t *testing.T) {
+	patch := NewPatches()
+	defer patch.Reset()
+
+	// 这里的mock需要禁用内联优化才可以成功
+	// 打桩controller层，router.handler的业务应与controller层解耦，所以测试用例也应该解藕
+	patch.ApplyMethod(reflect.TypeOf(controller.NewUserController(nil)), "DeleteUserById",
+		func(_ *controller.UserCtl, mockId int) error {
+			println("heated it")
+			if mockId == 222 {
+				return errors.New("controller err")
+			}
+			return nil
+		})
+
+	Convey("testing DeleteUserById handler", t, func() {
+
+		Convey("testing DeleteUserById handler when success", func() {
+
+			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			respMock := httptest.NewRecorder()
+			reqMock := httptest.NewRequest("DELETE", "http://www.baidu.com/user/getById?userId=1",
+				new(strings.Reader))
+			userDeleteByIdRou.GetHandler()(respMock, reqMock)
+			So(respMock.Body.String(), ShouldStartWith, "{\"status\":2000,\"data\":")
+			So(respMock.Code, ShouldEqual, 200)
+		})
+
+		Convey("testing DeleteUserById handler when fail with wrong param", func() {
+			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			respMock := httptest.NewRecorder()
+			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=ksdjhf",
+				new(strings.Reader))
+			userDeleteByIdRou.GetHandler()(respMock, reqMock)
+			So(respMock.Body.String(), ShouldEqual, "{\"errCode\":4001,\"errMessage\":\"参数校验错误\"}")
+		})
+
+		Convey("testing DeleteUserById handler when controller err", func() {
+
+			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			respMock := httptest.NewRecorder()
+			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=222",
+				new(strings.Reader))
+			userDeleteByIdRou.GetHandler()(respMock, reqMock)
+			So(respMock.Body.String(), ShouldEqual, "{\"errCode\":4002,\"errMessage\":\"controller err\"}")
+		})
+	})
+}

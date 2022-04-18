@@ -62,8 +62,6 @@ func TestUpdateUser(t *testing.T) {
 	})
 }
 
-
-
 func TestGetByUserId(t *testing.T) {
 
 	Convey("test GetUserById", t, func() {
@@ -76,13 +74,13 @@ func TestGetByUserId(t *testing.T) {
 		Convey("empty when not exist this id", func() {
 			userStr, err := NewUserController(&mockRepo{isMockWrong: false}).GetUserById(notExistId)
 			So(err, ShouldBeNil)
-			So(userStr, ShouldEqual,"")
+			So(userStr, ShouldEqual, "")
 		})
 
 		Convey("success when user is exists", func() {
 			userStr, err := NewUserController(&mockRepo{isMockWrong: false}).GetUserById(22)
 			So(err, ShouldBeNil)
-			So(userStr, ShouldEqual,"{\"UserId\":111,\"UserName\":\"user111\",\"BirthOfDate\":\"2020-09-09\",\"Address\":\"addr\",\"Description\":\"des\",\"CreateAt\":\"2020-01-01 16:00:00\"}")
+			So(userStr, ShouldEqual, "{\"UserId\":111,\"UserName\":\"user111\",\"BirthOfDate\":\"2020-09-09\",\"Address\":\"addr\",\"Description\":\"des\",\"CreateAt\":\"2020-01-01 16:00:00\"}")
 		})
 	})
 }
@@ -97,7 +95,7 @@ func (m *mockRepo) GetByUserId(userId int) (*infrastruct.User, error) {
 		return nil, errors.New("wrong")
 	}
 	if notExistId == userId {
-		return nil,nil
+		return nil, nil
 	}
 	user := infrastruct.User{
 		UserId:      111,

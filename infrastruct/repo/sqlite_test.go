@@ -60,6 +60,7 @@ func TestCreate_GetByUserName_Update_DeleteById(t *testing.T) {
 	})
 }
 
+// 测试根据用户id获取用户
 func TestGetByUserId(t *testing.T) {
 	defer func() {
 		// 防止产生脏数据影响其他测试用例
@@ -79,13 +80,38 @@ func TestGetByUserId(t *testing.T) {
 			So(user_.UserName, ShouldEqual, "user111")
 		})
 
-		Convey("testing GetByUserById when not exit", func() {
+		Convey("testing GetByUserById when user not exists", func() {
 			user_, err := defaultUserRepo.GetByUserId(333)
 			So(err, ShouldBeNil)
 			So(user_, ShouldBeNil)
 		})
 	})
+}
 
+// 测试根据id删除用户
+func TestDeleteByUserId(t *testing.T) {
+	defer func() {
+		// 防止产生脏数据影响其他测试用例
+		defaultUserRepo.db.Exec("DELETE FROM  users")
+	}()
+	// setup
+	err := defaultUserRepo.db.Exec("DELETE FROM  users;INSERT INTO \"users\" VALUES (111, 'user111', '2013.09.02', 'Address2', 'Description2', '2022-04-17 23:21:13.27929+08:00');").Error
+	if err != nil {
+		t.Fatal("repo run error: ", err.Error())
+		return
+	}
+	Convey("testing DeleteByUserId", t, func() {
+		Convey("testing DeleteByUserId when succeed", func() {
+			err := defaultUserRepo.DeleteById(111)
+			So(err, ShouldBeNil)
+			user_, err := defaultUserRepo.GetByUserId(111)
+			So(err, ShouldBeNil)
+			So(user_, ShouldBeNil)
+		})
 
-
+		Convey("testing DeleteByUserId when user not exists", func() {
+			err := defaultUserRepo.DeleteById(333)
+			So(err, ShouldBeNil)
+		})
+	})
 }

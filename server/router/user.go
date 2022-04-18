@@ -52,23 +52,48 @@ func (u *UserRouter) UpdateUserRouter() Router {
 	return u
 }
 
-// UpdateUserRouter 更新用户的router
+// GetByIdRouter 更新用户的router
 func (u *UserRouter) GetByIdRouter() Router {
 	u.path = "/user/getById"
 	u.handler = getByIdHandler
 	return u
 }
 
-func getByIdHandler(resp http.ResponseWriter, req *http.Request) {
-	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
+// UpdateUserRouter 更新用户的router
+func (u *UserRouter) DeleteByIdRouter() Router {
+	u.path = "/user/deleteById"
+	u.handler = deleteByIdHandler
+	return u
+}
+
+func deleteByIdHandler(resp http.ResponseWriter, req *http.Request) {
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
 	userId, err := getIdFromReqHeader(req)
 	if err != nil {
-		println(err.Error()) // 应记录日志
+		// 应记录日志
+		setParamErr(resp)
+		return
+	}
+	err = controller.NewUserController(nil).DeleteUserById(userId)
+	if err != nil {
+		// 应记录日志
+		setErrResp(resp, err.Error())
+		return
+	}
+	setSuccessResp(resp, "succeed")
+}
+
+func getByIdHandler(resp http.ResponseWriter, req *http.Request) {
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
+	userId, err := getIdFromReqHeader(req)
+	if err != nil {
+		// 应记录日志
 		setParamErr(resp)
 		return
 	}
 	userJsonStr, err := controller.NewUserController(nil).GetUserById(userId)
 	if err != nil {
+		// 应记录日志
 		setErrResp(resp, err.Error())
 		return
 	}
@@ -77,15 +102,16 @@ func getByIdHandler(resp http.ResponseWriter, req *http.Request) {
 
 // createUserHandler 创建用户的请求处理器，方法POST
 func createUserHandler(resp http.ResponseWriter, req *http.Request) {
-	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
 	user, err := getUserModelFromReqBody(req)
 	if err != nil {
-		println(err.Error()) // 应记录日志
+		// 应记录日志
 		setParamErr(resp)
 		return
 	}
 	err = controller.NewUserController(nil).CreateUser(user)
 	if err != nil {
+		// 应记录日志
 		setErrResp(resp, err.Error())
 		return
 	}
@@ -94,16 +120,16 @@ func createUserHandler(resp http.ResponseWriter, req *http.Request) {
 
 // updateUserHandler 更新用户的请求处理器，方法POST
 func updateUserHandler(resp http.ResponseWriter, req *http.Request) {
-	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击，如os注入攻击
+	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
 	user, err := getUserModelFromReqBody(req)
 	if err != nil {
-		println(err.Error()) // 应记录日志
+		// 应记录日志
 		setParamErr(resp)
 		return
 	}
 	err = controller.NewUserController(nil).UpdateUser(user)
 	if err != nil {
-		println(err.Error()) // 应记录日志
+		// 应记录日志
 		setErrResp(resp, err.Error())
 		return
 	}

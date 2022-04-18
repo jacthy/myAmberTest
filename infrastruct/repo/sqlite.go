@@ -34,7 +34,7 @@ func (u *UserRepo) GetByUserId(id int) (*infrastruct.User, error) {
 	var user user
 	err := u.db.First(&user, id).Error
 	if err == gorm.ErrRecordNotFound {
-		return nil,nil
+		return nil, nil
 	}
 	if err != nil {
 		return nil, err

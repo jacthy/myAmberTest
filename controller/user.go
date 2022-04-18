@@ -44,8 +44,8 @@ func (u *UserCtl) UpdateUser(user *infrastruct.User) error {
 	return u.repo.Update(user)
 }
 
-func (u *UserCtl) DeleteUser() {
-
+func (u *UserCtl) DeleteUserById(userId int) error {
+	return u.repo.DeleteById(userId)
 }
 
 func (u *UserCtl) GetUserById(userId int) (string, error) {
@@ -54,7 +54,7 @@ func (u *UserCtl) GetUserById(userId int) (string, error) {
 		return "", err
 	}
 	if userModel == nil {
-		return "",nil
+		return "", nil
 	}
 	str, err := json.Marshal(userModel)
 	if err != nil {

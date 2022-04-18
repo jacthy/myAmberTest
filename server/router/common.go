@@ -53,7 +53,7 @@ func setErrResp(resp http.ResponseWriter, errorMessage string) {
 func setSuccessResp(resp http.ResponseWriter, message string) {
 	reap := SuccessResp{
 		Status: statusOK,
-		Data: message ,
+		Data:   message,
 	}
 	msg, e := json.Marshal(reap)
 	if e != nil {
