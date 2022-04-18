@@ -42,4 +42,51 @@ server端算是一个对自己的challenge,自己实现的简易web框架
         )
     }
     ```
-2. 
+2. controller 业务逻辑层，依赖基础设施层提供持久化服务，并且通过依赖抽象接口的方式解耦
+    - 处理业务逻辑
+    ```
+    // CreateUser 创建用户业务逻辑
+    func (u *UserCtl) CreateUser(user *infrastruct.User) error {
+    	isNotExist, err := u.repo.NotExistByName(user.UserName)
+    	if err != nil {
+    		return err
+    	}
+    	if !isNotExist {
+    		return errors.New("该用户名已存在")
+    	}
+    	return u.repo.Create(user)
+    }
+    ```
+3. infrastruct基础设施层，目前只有sqlite实现的存储功能
+    - 将业务对象进行持久化处理
+        ```
+        // Create 将新建对象进行持久化
+        func (u *UserRepo) Create(user *infrastruct.User) error {
+        	model := toSqliteModel(user) // 转换为dto层的对象进行存储
+        	currentTime := time.Now()
+        	model.CreateAt = &currentTime
+        	return u.db.Create(model).Error
+        }
+        ```
+### 单元测试简介
+1. 单元测试设计原则：server层与controller层解耦，controller层与repo层解耦
+2. 测试方法参考：可使用Makefile中的test命令，直接执行命令make test
+2. 选用gomonkey作为打桩工具使用，实现对部分方法的mock实现,注意点：一些内联优化的函数是mock不了的，所以go test的时候要禁用内联。
+    ```
+        patch := NewPatches()
+        defer patch.Reset()
+    
+        // 打桩controller层，router.handler的业务应与controller层解耦，所以测试用例也应该解藕
+        patch.ApplyMethod(reflect.TypeOf(controller.NewUserController(nil)), "DeleteUserById",
+            func(_ *controller.UserCtl, mockId int) error {
+                println("heated it")
+                if mockId == 222 {
+                    return errors.New("controller err")
+                }
+                return nil
+            })
+    ```
+3. 选用convey进行一个测试用例的阐述说明
+4. 通过接口+依赖注入方式实现的repo，会直接mock一个对象进行打桩
+### 接口设计文档参考
+[api接口文档](./api_design_document.md)

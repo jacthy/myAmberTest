@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/liaojuntao" beforeDir="false" afterPath="$PROJECT_DIR$/liaojuntao" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/registor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/registor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/common.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/router/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +68,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Makefile.generate">
+  <component name="RunManager" selected="Go Test.go test go-backend-test-liaojuntao">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -84,17 +77,6 @@
       <filePath value="$PROJECT_DIR$" />
       <package value="github.com/liaojuntao" />
       <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/server/router" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/server/router" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTest_DeleteUserByIdRouter_Handler\E$" />
       <method v="2" />
     </configuration>
     <configuration name="Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -141,6 +123,16 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go test go-backend-test-liaojuntao" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-backend-test-liaojuntao" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/liaojuntao" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="generate" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="generate" workingDirectory="" arguments="">
         <envs />
@@ -149,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test go-backend-test-liaojuntao" />
         <item itemvalue="Makefile.generate" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (4)" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (3)" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)" />
-        <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -169,22 +161,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="411" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1650209500247" />
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650245444569">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650245566349">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650245444569" />
-    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650245444567">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650245566349" />
+    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650245566347">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650245444567" />
-    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650245444566">
+    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650245566347" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650245566346">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650245444566" />
-    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650245444568">
+    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650245566346" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650245566348">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650245444568" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650245566348" />
     <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1650239212848">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -244,6 +236,6 @@
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_controller.out" NAME="go test controller Coverage Results" MODIFIED="1650240108554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$TestServer_in_github_com_liaojuntao_server.out" NAME="TestServer in github.com/liaojuntao/server Coverage Results" MODIFIED="1650154394556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$user_test_go.out" NAME="user_test.go Coverage Results" MODIFIED="1650240136352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_go_backend_test_liaojuntao.out" NAME="go test go-backend-test-liaojuntao Coverage Results" MODIFIED="1650239477553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_go_backend_test_liaojuntao.out" NAME="go test go-backend-test-liaojuntao Coverage Results" MODIFIED="1650245545792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
