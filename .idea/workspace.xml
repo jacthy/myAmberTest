@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastruct/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastruct/repo/assemble.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/assemble.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/interceptor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/interceptor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/registor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/registor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/router/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +72,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RunManager" selected="Makefile.test-getById">
@@ -144,6 +153,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="411" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1650209500247" />
+    <state x="397" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1650253580041">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="397" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.800@0.0.1280.800" timestamp="1650253580041" />
     <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650252485625">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

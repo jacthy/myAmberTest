@@ -37,7 +37,11 @@ func defaultInterceptor(resp http.ResponseWriter, req *http.Request, handler Han
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Printf("oh no, fatal err: %v \n", err)
-			resp.Write([]byte(systemErrStr))
+			_,writeErr:=resp.Write([]byte(systemErrStr))
+			if writeErr != nil {
+				// 记录日志
+				println("写入响应失败:",writeErr.Error())
+			}
 			resp.WriteHeader(http.StatusInternalServerError)
 		}
 	}()

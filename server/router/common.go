@@ -37,7 +37,11 @@ func setParamErr(resp http.ResponseWriter) {
 		println(e.Error()) // 应通过日志记录，这里简化
 		// 由于此处marshal错误，也需要writeHeader,所以不直接return
 	}
-	resp.Write(message)
+	_,writeErr := resp.Write(message)
+	if writeErr != nil {
+		// 记录日志
+		println("写入响应失败:",writeErr.Error())
+	}
 }
 
 // setErrResp 设置业务执行错误
@@ -50,7 +54,11 @@ func setErrResp(resp http.ResponseWriter, errorMessage string) {
 	if e != nil {
 		println(e.Error()) // 同setParamErr中marshal的错误处理
 	}
-	resp.Write(message)
+	_,writeErr := resp.Write(message)
+	if writeErr != nil {
+		// 记录日志
+		println("写入响应失败:",writeErr.Error())
+	}
 	resp.WriteHeader(http.StatusNotAcceptable)
 }
 
@@ -65,7 +73,11 @@ func setSuccessResp(resp http.ResponseWriter, message string) {
 	if e != nil {
 		println(e.Error()) // 同setParamErr中marshal的错误处理
 	}
-	resp.Write(msg)
+	_, writeErr := resp.Write(msg)
+	if writeErr != nil {
+		// 记录日志
+		println("写入响应失败:",writeErr.Error())
+	}
 	resp.WriteHeader(http.StatusOK)
 }
 

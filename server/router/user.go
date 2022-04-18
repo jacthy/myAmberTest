@@ -37,7 +37,7 @@ func UpdateUserRouter() Router {
 	return u
 }
 
-// GetByIdRouter 更新用户的router
+// GetByIdRouter 获取用户的router
 func GetByIdRouter() Router {
 	u := new(UserRouter)
 	u.path = "/user/getById"
@@ -53,6 +53,7 @@ func DeleteByIdRouter() Router {
 	return u
 }
 
+// deleteByIdHandler 删除用户的handler方法，方法：GET
 func deleteByIdHandler(resp http.ResponseWriter, req *http.Request) {
 	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
 	userId, err := getIdFromReqHeader(req)
@@ -70,6 +71,7 @@ func deleteByIdHandler(resp http.ResponseWriter, req *http.Request) {
 	setSuccessResp(resp, "succeed")
 }
 
+// getByIdHandler 根据id获取用户的handler，方法：GET
 func getByIdHandler(resp http.ResponseWriter, req *http.Request) {
 	// // 这里可以做一些数据合法性校验及安全校验，如os注入攻击
 	userId, err := getIdFromReqHeader(req)

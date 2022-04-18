@@ -1,9 +1,10 @@
+// interceptor时参考grpc的拦截器实现的server拦截器
 package server
 
 import "net/http"
 
 // Handler 定义处理函数，同http处理函数handler
-// 该函数用于真正处理grpc信号
+// 处理http请求的处理器函数
 type Handler http.HandlerFunc
 
 // Interceptor 拦截器，该方法的设计特点：入参要有handler的入参以及handler，返回值要与handler相同

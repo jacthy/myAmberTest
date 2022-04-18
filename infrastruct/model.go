@@ -9,5 +9,4 @@ type User struct {
 	Address     string
 	Description string
 	CreateAt    string
-	//Origin *User
 }

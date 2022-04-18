@@ -33,6 +33,7 @@ func (u *UserCtl) CreateUser(user *infrastruct.User) error {
 	return u.repo.Create(user)
 }
 
+// UpdateUser 更新用户
 func (u *UserCtl) UpdateUser(user *infrastruct.User) error {
 	existUser, err := u.repo.GetByUserName(user.UserName)
 	if err != nil {
@@ -44,10 +45,12 @@ func (u *UserCtl) UpdateUser(user *infrastruct.User) error {
 	return u.repo.Update(user)
 }
 
+// DeleteUserById 删除用户 删除不存在的用户时不报错
 func (u *UserCtl) DeleteUserById(userId int) error {
 	return u.repo.DeleteById(userId)
 }
 
+// GetUserById 获取用户
 func (u *UserCtl) GetUserById(userId int) (string, error) {
 	userModel, err := u.repo.GetByUserId(userId)
 	if err != nil {

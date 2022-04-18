@@ -19,7 +19,10 @@ func init() {
 	db.Debug()
 	// 这里的数据库初始化应该独立DB操作，这里为了简化demo所以耦合在这里
 	if !db.Migrator().HasTable(&user{}) {
-		db.AutoMigrate(&user{})
+		err = db.AutoMigrate(&user{})
+		if err != nil {
+			panic("初始化失败:"+err.Error())
+		}
 	}
 	defaultUserRepo = &UserRepo{
 		db: db,
@@ -30,6 +33,7 @@ type UserRepo struct {
 	db *gorm.DB
 }
 
+// GetByUserId 获取用户实体
 func (u *UserRepo) GetByUserId(id int) (*infrastruct.User, error) {
 	var user user
 	err := u.db.First(&user, id).Error
@@ -55,10 +59,12 @@ func (u *UserRepo) Create(user *infrastruct.User) error {
 	return u.db.Create(model).Error
 }
 
+// DeleteById 删除用户
 func (u *UserRepo) DeleteById(id int) error {
 	return u.db.Delete(&user{}, "user_id", id).Error
 }
 
+// GetByUserName 根据用户名获取用户
 func (u *UserRepo) GetByUserName(userName string) (*infrastruct.User, error) {
 	user, err := u.getByUserName(userName)
 	if err == gorm.ErrRecordNotFound {
@@ -76,6 +82,7 @@ func (u *UserRepo) getByUserName(userName string) (*infrastruct.User, error) {
 	return toUser(&user), err
 }
 
+// NotExistByName 判断用户名是否不存在
 func (u *UserRepo) NotExistByName(userName string) (bool, error) {
 	_, err := u.getByUserName(userName)
 	if err == gorm.ErrRecordNotFound {
@@ -84,6 +91,7 @@ func (u *UserRepo) NotExistByName(userName string) (bool, error) {
 	return false, err
 }
 
+// Update 更新用户
 func (u *UserRepo) Update(user *infrastruct.User) error {
 	modelUser := toSqliteModel(user)
 	return u.db.Model(&modelUser).Updates(modelUser).Error

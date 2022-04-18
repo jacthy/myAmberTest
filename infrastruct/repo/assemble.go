@@ -7,6 +7,7 @@ import (
 
 const defaultTimeFormat = "2006-01-02 15:04:05"
 
+// toSqliteModel dto与model转换
 func toSqliteModel(userDto *infrastruct.User) *user {
 	if userDto == nil {
 		return nil
@@ -20,6 +21,7 @@ func toSqliteModel(userDto *infrastruct.User) *user {
 	}
 }
 
+// toUser model与dto转换
 func toUser(model *user) *infrastruct.User {
 	if model == nil {
 		return nil
