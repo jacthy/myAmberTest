@@ -2,7 +2,7 @@
 go backend test demo from liaojuntao，一个简易的用户管理系统demo,
 server端算是一个对自己的challenge,自己实现的简易web框架
 ### 系统简析
-![image](https://note.youdao.com/s/DS5d5tY7)
+![image](./structure.png) 
 - 系统主要分三层：接口层，业务层，基础服务层
     - 接口层主要是注册路由，规范restful服务接口，以及拦截器（后期可添加限流，熔断，鉴权等高级特性）
     - 业务层主要是处理业务逻辑，然后调用基础服务层（其实就是dto层）实现持久化存储
