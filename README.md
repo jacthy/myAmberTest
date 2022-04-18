@@ -116,3 +116,10 @@ server端算是一个对自己的challenge,自己实现的简易web框架
       test-deleteById:
         curl -X DELETE -k -v  -H "Content-Type: application/json" http://127.0.0.1:8001/user/deleteById?userId=1
     ```
+### quick start
+1. go run main.go 启动程序
+2. 依次通过以下命令进行测试：
+    - 新增用户： make test-add-user
+    - 获取id=1的用户： make test-getById
+    - 修改id为1的用户的信息 make test-add-user
+    - 删除id为1的用户make test-deleteById
