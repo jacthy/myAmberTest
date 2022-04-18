@@ -48,7 +48,7 @@ func (s *Server) Run() error {
 	// 加载路由器
 	for _, r := range s.router {
 		http.HandleFunc(r.GetPath(), r.GetHandler())
-		println(r.GetPath(),"完成注册")
+		println(r.GetPath(), "完成注册")
 	}
 	go func() {
 		errChan <- http.ListenAndServe(s.addr, s)

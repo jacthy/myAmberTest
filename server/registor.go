@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"github.com/liaojuntao/server/router"
 	"net/http"
 )
@@ -8,6 +9,7 @@ import (
 const (
 	routerNum      = 4 // 路由器初始化数量
 	interceptorNum = 2 // 拦截器初始化数量
+	systemErrStr   = "{\"errCode\":5000,\"errMessage\":\"系统内部错误\"}"
 )
 
 // loadRouter 加载路由
@@ -33,10 +35,11 @@ func serverInterceptors() []Interceptor {
 // defaultInterceptor 默认拦截器
 func defaultInterceptor(resp http.ResponseWriter, req *http.Request, handler Handler) {
 	defer func() {
-		//if err := recover(); err != nil {
-		//	fmt.Printf("oh no, fatal err: %v \n", err)
-		//	resp.WriteHeader(http.StatusInternalServerError)
-		//}
+		if err := recover(); err != nil {
+			fmt.Printf("oh no, fatal err: %v \n", err)
+			resp.Write([]byte(systemErrStr))
+			resp.WriteHeader(http.StatusInternalServerError)
+		}
 	}()
 	handler(resp, req)
 }

@@ -24,14 +24,17 @@ func toUser(model *user) *infrastruct.User {
 	if model == nil {
 		return nil
 	}
-	return &infrastruct.User{
+	user := &infrastruct.User{
 		UserId:      model.UserId,
 		UserName:    model.UserName,
 		BirthOfDate: model.BirthOfDate,
 		Address:     model.Address,
 		Description: model.Description,
-		CreateAt:    model.CreateAt.Format(defaultTimeFormat),
 	}
+	if model.CreateAt != nil {
+		user.CreateAt = model.CreateAt.Format(defaultTimeFormat)
+	}
+	return user
 }
 
 type user struct {
