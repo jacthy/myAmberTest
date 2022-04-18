@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Makefile.test-getById">
+  <component name="RunManager" selected="Go Test.go test go-backend-test-liaojuntao">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -125,10 +127,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test go-backend-test-liaojuntao" />
         <item itemvalue="Makefile.test-getById" />
         <item itemvalue="Makefile.test-deleteById" />
         <item itemvalue="Makefile.test-add-user" />
-        <item itemvalue="Go Test.go test go-backend-test-liaojuntao" />
         <item itemvalue="Makefile.generate" />
       </list>
     </recent_temporary>
@@ -149,22 +151,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="397" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.800@0.0.1280.800" timestamp="1650253580041" />
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1650254040858">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650256799457">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650254040858" />
-    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1650254040856">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650256799457" />
+    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650256799455">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650254040856" />
-    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1650254040855">
+    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650256799455" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650256799454">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650254040855" />
-    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1650254040857">
+    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650256799454" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650256799456">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650254040857" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650256799456" />
     <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1650254040861">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -228,6 +230,6 @@
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_controller.out" NAME="go test controller Coverage Results" MODIFIED="1650240108554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$TestServer_in_github_com_liaojuntao_server.out" NAME="TestServer in github.com/liaojuntao/server Coverage Results" MODIFIED="1650154394556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$user_test_go.out" NAME="user_test.go Coverage Results" MODIFIED="1650240136352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_go_backend_test_liaojuntao.out" NAME="go test go-backend-test-liaojuntao Coverage Results" MODIFIED="1650245545792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/go_backend_test_liaojuntao$go_test_go_backend_test_liaojuntao.out" NAME="go test go-backend-test-liaojuntao Coverage Results" MODIFIED="1650256763832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

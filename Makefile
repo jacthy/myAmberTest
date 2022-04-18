@@ -11,7 +11,7 @@ test-add-user:
 		-d '{"userName":"用户1","birthOfDate":"2021-02-09","address":"广州","description":"描述1"}'
 
 # 测试修改用户，用户id需要自己修改
-test-add-user:
+test-update-user:
 	curl -X POST -k -v \
 		-H "Content-Type: application/json"  \
 			http://127.0.0.1:8001/user/update \

@@ -88,6 +88,8 @@ server端算是一个对自己的challenge,自己实现的简易web框架
     ```
 3. 选用convey进行一个测试用例的阐述说明
 4. 通过接口+依赖注入方式实现的repo，会直接mock一个对象进行打桩
+5. 单元测试用例覆盖率>80%
+![image](./unit_test_report.png)
 ### 接口设计文档参考
 [api接口文档](./api_design_document.md)
 ### 接口测试参考
@@ -116,6 +118,8 @@ server端算是一个对自己的challenge,自己实现的简易web框架
       test-deleteById:
         curl -X DELETE -k -v  -H "Content-Type: application/json" http://127.0.0.1:8001/user/deleteById?userId=1
     ```
+- 接口测试示例 
+![image](./api_test_report.png)
 ### quick start
 1. go run main.go 启动程序
 2. 依次通过以下命令进行测试：
