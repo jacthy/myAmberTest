@@ -28,7 +28,7 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 					return nil
 				})
 
-			userRou := GetUserRouter().CreateUserRouter()
+			userRou := CreateUserRouter()
 			postData := "{\"userName\":\"用户1\",\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -39,7 +39,7 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 		})
 
 		Convey("testing CreateUserRouter handler when fail with wrong param", func() {
-			userRou := GetUserRouter().CreateUserRouter()
+			userRou := CreateUserRouter()
 			postData := "{\"userName\":1000,\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -56,7 +56,7 @@ func Test_CreateUserRouter_Handler(t *testing.T) {
 				func(_ *controller.UserCtl, _ *infrastruct.User) error {
 					return errors.New("该用户已存在")
 				})
-			userRou := GetUserRouter().CreateUserRouter()
+			userRou := CreateUserRouter()
 			postData := "{\"userName\":\"用户1\",\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -82,7 +82,7 @@ func Test_UpdateUserRouter_Handler(t *testing.T) {
 					return nil
 				})
 
-			userUpdateRou := GetUserRouter().UpdateUserRouter()
+			userUpdateRou := UpdateUserRouter()
 			postData := "{\"userId\":1,\"userName\":\"用户1\",\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -93,7 +93,7 @@ func Test_UpdateUserRouter_Handler(t *testing.T) {
 		})
 
 		Convey("testing UpdateUserRouter handler when fail with wrong param", func() {
-			userUpdateRou := GetUserRouter().UpdateUserRouter()
+			userUpdateRou := UpdateUserRouter()
 			postData := "{\"userName\":1000,\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -109,7 +109,7 @@ func Test_UpdateUserRouter_Handler(t *testing.T) {
 				func(_ *controller.UserCtl, _ *infrastruct.User) error {
 					return errors.New("该用户已存在")
 				})
-			userUpdateRou := GetUserRouter().UpdateUserRouter()
+			userUpdateRou := UpdateUserRouter()
 			postData := "{\"userName\":\"用户1\",\"birthOfDate\":\"2021-02-09\",\"address\":\"广州\",\"description\":\"描述1\"}"
 			respMock := httptest.NewRecorder()
 			reqMock := new(http.Request)
@@ -134,7 +134,7 @@ func Test_GetUserByIdRouter_Handler(t *testing.T) {
 					return userData, nil
 				})
 
-			userGetByIdRou := GetUserRouter().GetByIdRouter()
+			userGetByIdRou := GetByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=1",
 				new(strings.Reader))
@@ -144,7 +144,7 @@ func Test_GetUserByIdRouter_Handler(t *testing.T) {
 		})
 
 		Convey("testing getById handler when fail with wrong param", func() {
-			userGetByIdRou := GetUserRouter().GetByIdRouter()
+			userGetByIdRou := GetByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=ksdjhf",
 				new(strings.Reader))
@@ -159,7 +159,7 @@ func Test_GetUserByIdRouter_Handler(t *testing.T) {
 				func(_ *controller.UserCtl, _ int) (string, error) {
 					return "", nil
 				})
-			userGetByIdRou := GetUserRouter().GetByIdRouter()
+			userGetByIdRou := GetByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=222",
 				new(strings.Reader))
@@ -189,7 +189,7 @@ func Test_DeleteUserByIdRouter_Handler(t *testing.T) {
 
 		Convey("testing DeleteUserById handler when success", func() {
 
-			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			userDeleteByIdRou := DeleteByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("DELETE", "http://www.baidu.com/user/getById?userId=1",
 				new(strings.Reader))
@@ -199,7 +199,7 @@ func Test_DeleteUserByIdRouter_Handler(t *testing.T) {
 		})
 
 		Convey("testing DeleteUserById handler when fail with wrong param", func() {
-			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			userDeleteByIdRou := DeleteByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=ksdjhf",
 				new(strings.Reader))
@@ -209,7 +209,7 @@ func Test_DeleteUserByIdRouter_Handler(t *testing.T) {
 
 		Convey("testing DeleteUserById handler when controller err", func() {
 
-			userDeleteByIdRou := GetUserRouter().DeleteByIdRouter()
+			userDeleteByIdRou := DeleteByIdRouter()
 			respMock := httptest.NewRecorder()
 			reqMock := httptest.NewRequest("GET", "http://www.baidu.com/user/getById?userId=222",
 				new(strings.Reader))

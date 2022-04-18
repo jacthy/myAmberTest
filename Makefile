@@ -1,6 +1,6 @@
 
 # go test 进行单元测试（-gcflags=-l为禁用内联）
-generate:
+test:
 	go test -gcflags=-l ./... -cover
 	
 test-add-user:

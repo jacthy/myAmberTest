@@ -47,6 +47,7 @@ func (s *Server) Run() error {
 	signal.Notify(stopChan, syscall.SIGTERM, syscall.SIGINT)
 	// 加载路由器
 	for _, r := range s.router {
+		println(r.GetPath())
 		http.HandleFunc(r.GetPath(), r.GetHandler())
 	}
 	go func() {

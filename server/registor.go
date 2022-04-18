@@ -14,7 +14,10 @@ const (
 func loadRouter() []router.Router {
 	r := make([]router.Router, 0, routerNum)
 	return append(r,
-		router.GetUserRouter().CreateUserRouter(),
+		router.CreateUserRouter(),
+		router.UpdateUserRouter(),
+		router.GetByIdRouter(),
+		router.DeleteByIdRouter(),
 	)
 }
 

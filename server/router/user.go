@@ -5,23 +5,6 @@ import (
 	"net/http"
 )
 
-const (
-	statusOK = 2000 // 成功响应
-	paramErr = 4001 // 参数校验错误
-	optErr   = 4002 // 业务操作错误
-)
-
-var defaultUserRouter *UserRouter
-
-// GetUserRouter 获取用户中心根路由
-func GetUserRouter() *UserRouter {
-	return defaultUserRouter
-}
-
-func init() {
-	defaultUserRouter = &UserRouter{}
-}
-
 // UserRouter 用户中心根路由
 type UserRouter struct {
 	path    string
@@ -39,28 +22,32 @@ func (u *UserRouter) GetHandler() http.HandlerFunc {
 }
 
 // CreateUserRouter 创建用户的router
-func (u *UserRouter) CreateUserRouter() Router {
+func CreateUserRouter() Router {
+	u := new(UserRouter)
 	u.path = "/user/create"
 	u.handler = createUserHandler
 	return u
 }
 
 // UpdateUserRouter 更新用户的router
-func (u *UserRouter) UpdateUserRouter() Router {
+func UpdateUserRouter() Router {
+	u := new(UserRouter)
 	u.path = "/user/update"
 	u.handler = updateUserHandler
 	return u
 }
 
 // GetByIdRouter 更新用户的router
-func (u *UserRouter) GetByIdRouter() Router {
+func GetByIdRouter() Router {
+	u := new(UserRouter)
 	u.path = "/user/getById"
 	u.handler = getByIdHandler
 	return u
 }
 
 // UpdateUserRouter 更新用户的router
-func (u *UserRouter) DeleteByIdRouter() Router {
+func DeleteByIdRouter() Router {
+	u := new(UserRouter)
 	u.path = "/user/deleteById"
 	u.handler = deleteByIdHandler
 	return u

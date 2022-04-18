@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b6430-e294-4368-8886-94667d37adb7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastruct/repo/sqlite_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liaojuntao" beforeDir="false" afterPath="$PROJECT_DIR$/liaojuntao" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/registor.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/registor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/common.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (4)">
+  <component name="RunManager" selected="Makefile.generate">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -128,17 +130,6 @@
       <pattern value="^\QTest_DeleteUserByIdRouter_Handler\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-backend-test-liaojuntao" />
-      <working_directory value="$PROJECT_DIR$/server/router" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/liaojuntao/server/router" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTest_DeleteUserByIdRouter_Handler\E$" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="go-backend-test-liaojuntao" />
       <working_directory value="$PROJECT_DIR$" />
@@ -150,13 +141,19 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="generate" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="generate" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile.generate" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (4)" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (3)" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (2)" />
         <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router (1)" />
-        <item itemvalue="Go Test.Test_DeleteUserByIdRouter_Handler in github.com/liaojuntao/server/router" />
       </list>
     </recent_temporary>
   </component>
@@ -172,22 +169,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="411" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1650209500247" />
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650241021496">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom" timestamp="1650245444569">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650241021496" />
-    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650241021494">
+    <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1650245444569" />
+    <state width="1238" height="251" key="GridCell.Tab.0.center" timestamp="1650245444567">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650241021494" />
-    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650241021493">
+    <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1650245444567" />
+    <state width="1238" height="251" key="GridCell.Tab.0.left" timestamp="1650245444566">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650241021493" />
-    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650241021495">
+    <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1650245444566" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right" timestamp="1650245444568">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650241021495" />
+    <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1650245444568" />
     <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1650239212848">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

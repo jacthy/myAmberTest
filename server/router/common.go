@@ -8,6 +8,12 @@ import (
 	"strconv"
 )
 
+const (
+	statusOK = 2000 // 成功响应
+	paramErr = 4001 // 参数校验错误
+	optErr   = 4002 // 业务操作错误
+)
+
 // ErrResp 错误时的响应
 type ErrResp struct {
 	ErrCode    int    `json:"errCode"`    // 错误响应码
